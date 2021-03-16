@@ -14,5 +14,9 @@
     onBoatReviewAdded : function(component, event, helper) {
         console.log('boatreviewAdded JS running on BoatDetails');
         component.set('v.selectedTabId', 'boatreviewtab');
+        var boatReviewComponent = component.find("boatReviewComponent");
+        if(boatReviewComponent){
+            boatReviewComponent.refresh();
+        }
     }
 })

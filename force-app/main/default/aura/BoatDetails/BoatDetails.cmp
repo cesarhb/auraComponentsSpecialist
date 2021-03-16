@@ -3,7 +3,7 @@
     <aura:attribute name="id" type="id"/>
     <aura:attribute access="private" name="selectedTabId" type="String"/>
     <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}"/>
-	<aura:handler event="c:BoatReviewAdded" name="BoatReviewAdded" action="{!c.onBoatReviewAdded}" phase="capture"/>
+    <aura:handler event="c:BoatReviewAdded" name="BoatReviewAdded" action="{!c.onBoatReviewAdded}" phase="capture"/>
     <force:recordData aura:id="service" recordId="{!v.id}"
                       targetFields="{!v.boat}"
                       fields="Id,
@@ -18,13 +18,13 @@
                               Picture__c"
                       recordUpdated="{!c.onRecordUpdated}"
                       />
-    <aura:if isTrue="{!v.boat != undefined}">
+    <aura:if isTrue="{! !empty(v.boat)}">
     	<lightning:tabset aura:id="boatTabSet" selectedTabId="{!v.selectedTabId}">
         	<lightning:tab label="Details" id="tabDetails">
                 <c:BoatDetail boat="{!v.boat}"/>
         	</lightning:tab>
         	<lightning:tab label="Reviews" id="boatreviewtab" >
-                <c:BoatReviews boat="{!v.boat}"/>
+                <c:BoatReviews aura:id="boatReviewComponent" boat="{!v.boat}"/>
         	</lightning:tab>
         	<lightning:tab label="Add Review" id="tabAddReview">
                 <c:AddBoatReview boat="{!v.boat}"/> 
