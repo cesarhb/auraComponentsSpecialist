@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction"  
+                access="global">
+
+    <aura:attribute name="boatTypeId" type="string" />
+    <aura:attribute name="selectedBoatType" type="string" default="" />
+    <aura:attribute name="auraEnabled" type="boolean" default="false" />
+	    
+    <aura:registerEvent name="formSubmit" type="c:FormSubmit"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+    <lightning:layout horizontalAlign="center">
+        
+        <lightning:select aura:id="BoatTypePicklist" name="" label="All Types" value="{!v.selectedBoatType}" onchange="{!c.boatTypeChange}">        	
+                <option value=""></option>
+                <option value="All Types">All Types</option>
+                <option value="Fishing Boat">Fishing Boat</option>
+				<option value="High Performance">High Performance</option>
+            	<option value="House Boat">House Boat</option>
+            	<option value="Jet Ski">Jet Ski</option>
+            	<option value="Pleasure Boat">Pleasure Boat</option>
+            	<option value="Sailboat">Sailboat</option>
+            	<option value="Ski Boat">Ski Boat</option>
+            	<option value="Yacht">Yacht</option>
+        </lightning:select>
+        
+        <lightning:button label="Search" 
+                              class="slds-m-top--medium"
+                          	  variant="brand"
+                              onclick="{!c.onFormSubmit}"/>
+
+        <aura:if isTrue="{!v.auraEnabled}">
+        	<lightning:button label="New" 
+                              class="slds-m-top--medium"
+                              variant="Neutral" 
+                              onclick="{!c.createRecord}"/>
+        </aura:if>
+      
+	</lightning:layout>
+    
+</aura:component>
