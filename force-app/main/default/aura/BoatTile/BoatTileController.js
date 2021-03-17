@@ -21,5 +21,15 @@
             "BoatSelected" : boat});
         console.log('about to send the boatSelectedEvent');
         boatSelectedEvent.fire();
+
+        var plotMapMarkerEvent = $A.get("e.c:PlotMapMarker");
+        plotMapMarkerEvent.setParams({
+            "sObjectId" : selectedBoat.Id,
+            "lat" : selectedBoat.Geolocation__Lattitude__s,
+            "long" : selectedBoat.Geolocation__Longitude__s,
+            "label" : selectedBoat.Name
+        });
+        plotMapMarkerEvent.fire();
+
     }
 })
