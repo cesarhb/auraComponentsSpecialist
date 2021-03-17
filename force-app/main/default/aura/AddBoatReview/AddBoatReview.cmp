@@ -21,6 +21,7 @@
                          value="{!v.boatReview.Name}" required="true" />
     	<lightning:inputRichText labelVisible="true" label="Description" disabledCategories="FORMAT_FONT" 
                                  aura:id="description" value="{!v.boatReview.Comment__c}"/>
+        <c:FiveStarRating value="{!v.boatReview.Rating__c}" readonly="false" />
         <div class="slds-align_absolute-center">
         	<lightning:button label="Submit" iconName="utility:save" onclick="{!c.onSave}"/>
         </div>
